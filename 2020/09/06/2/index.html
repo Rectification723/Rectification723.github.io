@@ -20,28 +20,42 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="全桥整流虾">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="头文件是我们.c文件与主函数所在文件的接口在单片机工程当中,我们常常使用模块化编程。经常使用多个.c文件。以及自己建立头文件的方式。 如何在Vc++6.0中建立头文件 首先我们先建立一个工程文件夹。这个就不用说了吧。 文件名字是xxx.h然后双击C&#x2F;C++ header file文件就建立完成了。  分析头文件构造我们看到有三个东西 123456789#ifndef __my_h__#defi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="条件编译与头文件">
+<meta property="og:url" content="http://example.com/2020/09/06/2/index.html">
 <meta property="og:site_name" content="全桥整流虾">
+<meta property="og:description" content="头文件是我们.c文件与主函数所在文件的接口在单片机工程当中,我们常常使用模块化编程。经常使用多个.c文件。以及自己建立头文件的方式。 如何在Vc++6.0中建立头文件 首先我们先建立一个工程文件夹。这个就不用说了吧。 文件名字是xxx.h然后双击C&#x2F;C++ header file文件就建立完成了。  分析头文件构造我们看到有三个东西 123456789#ifndef __my_h__#defi">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019090414352643.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904143900276.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904144547741.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904150303109.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904150600876.">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904150619362.">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904151344779.">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019090415211281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190904153021964.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-09-06T13:11:01.563Z">
+<meta property="article:modified_time" content="2020-09-06T13:13:09.263Z">
 <meta property="article:author" content="lxy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019090414352643.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/09/06/2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>全桥整流虾</title>
+  <title>条件编译与头文件 | 全桥整流虾</title>
   
 
 
@@ -139,9 +153,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -157,10 +172,9 @@
       <meta itemprop="name" content="全桥整流虾">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/06/2/" class="post-title-link" itemprop="url">条件编译与头文件</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          条件编译与头文件
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -184,7 +198,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>  头文件是我们.c文件与主函数所在文件的接口在单片机工程当中,我们常常使用模块化编程。经常使用多个.c文件。以及自己建立头文件的方式。</p>
+        <p>  头文件是我们.c文件与主函数所在文件的接口在单片机工程当中,我们常常使用模块化编程。经常使用多个.c文件。以及自己建立头文件的方式。</p>
 <h2 id="如何在Vc-6-0中建立头文件"><a href="#如何在Vc-6-0中建立头文件" class="headerlink" title="如何在Vc++6.0中建立头文件"></a>如何在Vc++6.0中建立头文件</h2><ol>
 <li>首先我们先建立一个工程文件夹。这个就不用说了吧。</li>
 <li><img src="https://img-blog.csdnimg.cn/2019090414352643.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="如图">文件名字是xxx.h<br>然后双击C/C++ header file<br>文件就建立完成了。<br><img src="https://img-blog.csdnimg.cn/20190904143900276.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
@@ -212,93 +226,30 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;my.h&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#define Leve 3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int Trans(int Data)</span><br><span class="line">&#123;</span><br><span class="line">#ifdef Level</span><br><span class="line">       printf(&quot;I Am Define\n&quot;);</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">  return Data-3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>我们删掉一个l。<img src="https://img-blog.csdnimg.cn/20190904153021964.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">可以看到代码就没有执行printf<br>还有其他的语句我就不一一举例子了。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/06/test/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="lxy">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="全桥整流虾">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/06/test/" class="post-title-link" itemprop="url">重定义Printf函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-06 19:48:22 / 修改时间：19:55:42" itemprop="dateCreated datePublished" datetime="2020-09-06T19:48:22+08:00">2020-09-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;  </span><br></pre></td></tr></table></figure>
-<p>里面主要用的还是这几个</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void va_start(va_list ap, last);  </span><br><span class="line">type va_arg(va_list ap, type);  </span><br><span class="line">void va_end(va_list ap);  </span><br><span class="line">void va_copy(va_list dest, va_list src);</span><br></pre></td></tr></table></figure>
-<p>其中<code>va_list</code> 的原型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">        char *a0;       &#x2F;* pointer to first homed integer argument *&#x2F;</span><br><span class="line">        int offset;     &#x2F;* byte offset of next parameter *&#x2F;</span><br><span class="line">&#125; va_list；</span><br></pre></td></tr></table></figure>
-<p>va_list是与变参列表相关的结构，里面保存着变参列表的信息包括变参列表的指针。</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void My_Printf(const char *fmt,...)  </span><br><span class="line">&#123;  </span><br><span class="line">    va_list ap;  </span><br><span class="line">    char string[50];&#x2F;&#x2F;缓冲区大小 </span><br><span class="line">    va_start(ap,fmt);  </span><br><span class="line">    vsprintf(string,fmt,ap);</span><br><span class="line">	puts(string);    &#x2F;&#x2F;在单片机中使用只需要将这里切换串口发送字符串函数</span><br><span class="line">    va_end(ap);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">void main(void)</span><br><span class="line">&#123;</span><br><span class="line">	float  float1&#x3D;1.23423f;</span><br><span class="line">    int    int1&#x3D;123;</span><br><span class="line">	char   char1&#x3D;&#39;c&#39;;</span><br><span class="line">	My_Printf(&quot;test\nfloat is %f\nint1 is %d\nchar1 is %c&quot;,float1,int1,char1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20190304222405919.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="运行结果"></p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="1-声明"><a href="#1-声明" class="headerlink" title="1.声明"></a>1.声明</h3><p>定义va_list型的变量</p>
-<h3 id="2-宏初始化"><a href="#2-宏初始化" class="headerlink" title="2.宏初始化"></a>2.宏初始化</h3><p>va_start宏初始化变量刚定义的va_list变量<br><code>void va_start(va_list ap, last); </code><br>这个宏的第二个参数是第一个可变参数的前一个参数，是一个固定的参数。</p>
-<h3 id="3-vsprintf"><a href="#3-vsprintf" class="headerlink" title="3. vsprintf()"></a>3. vsprintf()</h3><p>函数原型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int vsprintf(char *str, const char *format, va_list arg)</span><br></pre></td></tr></table></figure>
-<p>第一个参数  *str 字符数组指针<br>第二个参数  *format 具有输出标识 说明符就是printf 里的输出格式控制<br>第三个参数   arg一个表示可变参数列表的对象。这应被 <code>&lt;stdarg&gt;</code> 中定义的 va_start 宏初始化。</p>
-<h3 id="4-最后用va-end宏结束可变参数的获取。"><a href="#4-最后用va-end宏结束可变参数的获取。" class="headerlink" title="4.最后用va_end宏结束可变参数的获取。"></a>4.最后用va_end宏结束可变参数的获取。</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  经过实际测试在keil5环境中使用自定义的printf函数程序增加了接近2k左右，如果使用51单片机最好是调试的时候使用。最后再支持下国产stc8系列<br><a target="_blank" rel="noopener" href="http://www.stcmcudata.com/STC8F-DATASHEET/STC8H-20181208.pdf">http://www.stcmcudata.com/STC8F-DATASHEET/STC8H-20181208.pdf</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/06/test/" rel="prev" title="重定义Printf函数">
+      <i class="fa fa-chevron-left"></i> 重定义Printf函数
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -351,6 +302,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8Vc-6-0%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">如何在Vc++6.0中建立头文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%A4%B4%E6%96%87%E4%BB%B6%E6%9E%84%E9%80%A0"><span class="nav-number">2.</span> <span class="nav-text">分析头文件构造</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="nav-number"></span> <span class="nav-text">条件编译</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8-ifndef"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用#ifndef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endif"><span class="nav-number">3.</span> <span class="nav-text">#endif</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number"></span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90-1"><span class="nav-number">1.</span> <span class="nav-text">分析</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
