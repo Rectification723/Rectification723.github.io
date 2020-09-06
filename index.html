@@ -1,23 +1,328 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>全桥整流虾</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="lxy">
+    
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+    
+    <meta property="og:type" content="website">
+<meta property="og:title" content="全桥整流虾">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="全桥整流虾">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="lxy">
+<meta name="twitter:card" content="summary">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+<meta name="generator" content="Hexo 5.1.1"></head>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="全桥整流虾" title="全桥整流虾"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="全桥整流虾">全桥整流虾</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2020/09/06/test/" title="重定义Printf函数" itemprop="url">重定义Printf函数</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lxy" target="_blank" itemprop="author">lxy</a>
+		
+  <p class="article-time">
+    <time datetime="2020-09-06T11:48:22.446Z" itemprop="datePublished"> 发表于 2020-09-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;  </span><br></pre></td></tr></table></figure>
+<p>里面主要用的还是这几个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void va_start(va_list ap, last);  </span><br><span class="line">type va_arg(va_list ap, type);  </span><br><span class="line">void va_end(va_list ap);  </span><br><span class="line">void va_copy(va_list dest, va_list src);</span><br></pre></td></tr></table></figure>
+<p>其中<code>va_list</code> 的原型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">        char *a0;       &#x2F;* pointer to first homed integer argument *&#x2F;</span><br><span class="line">        int offset;     &#x2F;* byte offset of next parameter *&#x2F;</span><br><span class="line">&#125; va_list；</span><br></pre></td></tr></table></figure>
+<p>va_list是与变参列表相关的结构，里面保存着变参列表的信息包括变参列表的指针。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdarg.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void My_Printf(const char *fmt,...)  </span><br><span class="line">&#123;  </span><br><span class="line">    va_list ap;  </span><br><span class="line">    char string[50];&#x2F;&#x2F;缓冲区大小 </span><br><span class="line">    va_start(ap,fmt);  </span><br><span class="line">    vsprintf(string,fmt,ap);</span><br><span class="line">	puts(string);    &#x2F;&#x2F;在单片机中使用只需要将这里切换串口发送字符串函数</span><br><span class="line">    va_end(ap);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">void main(void)</span><br><span class="line">&#123;</span><br><span class="line">	float  float1&#x3D;1.23423f;</span><br><span class="line">    int    int1&#x3D;123;</span><br><span class="line">	char   char1&#x3D;&#39;c&#39;;</span><br><span class="line">	My_Printf(&quot;test\nfloat is %f\nint1 is %d\nchar1 is %c&quot;,float1,int1,char1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://img-blog.csdnimg.cn/20190304222405919.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="运行结果"></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="1-声明"><a href="#1-声明" class="headerlink" title="1.声明"></a>1.声明</h3><p>定义va_list型的变量</p>
+<h3 id="2-宏初始化"><a href="#2-宏初始化" class="headerlink" title="2.宏初始化"></a>2.宏初始化</h3><p>va_start宏初始化变量刚定义的va_list变量<br><code>void va_start(va_list ap, last); </code><br>这个宏的第二个参数是第一个可变参数的前一个参数，是一个固定的参数。</p>
+<h3 id="3-vsprintf"><a href="#3-vsprintf" class="headerlink" title="3. vsprintf()"></a>3. vsprintf()</h3><p>函数原型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int vsprintf(char *str, const char *format, va_list arg)</span><br></pre></td></tr></table></figure>
+<p>第一个参数  *str 字符数组指针<br>第二个参数  *format 具有输出标识 说明符就是printf 里的输出格式控制<br>第三个参数   arg一个表示可变参数列表的对象。这应被 <code>&lt;stdarg&gt;</code> 中定义的 va_start 宏初始化。</p>
+<h3 id="4-最后用va-end宏结束可变参数的获取。"><a href="#4-最后用va-end宏结束可变参数的获取。" class="headerlink" title="4.最后用va_end宏结束可变参数的获取。"></a>4.最后用va_end宏结束可变参数的获取。</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  经过实际测试在keil5环境中使用自定义的printf函数程序增加了接近2k左右，如果使用51单片机最好是调试的时候使用。最后再支持下国产stc8系列<br><a target="_blank" rel="noopener" href="http://www.stcmcudata.com/STC8F-DATASHEET/STC8H-20181208.pdf">http://www.stcmcudata.com/STC8F-DATASHEET/STC8H-20181208.pdf</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="Rectification723" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+
+  
+
+  
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/Rectification723" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="lxy">lxy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>
