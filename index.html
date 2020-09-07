@@ -150,6 +150,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/07/Machine%20Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="全桥整流虾">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/07/Machine%20Learning/" class="post-title-link" itemprop="url">梯度下降法(Gradient Descent)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-07 16:35:00 / 修改时间：16:40:52" itemprop="dateCreated datePublished" datetime="2020-09-07T16:35:00+08:00">2020-09-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>  最优解问题一直在某些自控系统中有需求，譬如pid控制器，目前我还是凭经验调节，偶然搜到可以用机器学习调节PID参数于是乎便开始了学习。顺便复习高数线代概率论。</p>
+<h1 id="原理总结"><a href="#原理总结" class="headerlink" title="原理总结"></a>原理总结</h1><p>是当（代价函数）Cost Function的值最小时取得的Parameters，为了达到这个目的，最值问题===求极值==。==多参数===求偏导。<br><img src="https://img-blog.csdnimg.cn/20190907212815747.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="最小二乘法（小平方法）"><a href="#最小二乘法（小平方法）" class="headerlink" title="最小二乘法（小平方法）"></a>最小二乘法（小平方法）</h2><p>$$  \sum_{i=0}^m{ (y^i - h_\theta (x_i))} ^2$$<br>打公式好累<br>只要样本值与预测值的差的平方和最小就能得到一个较好的回归曲线。</p>
+<h2 id="描述回归程度的量相关系数R"><a href="#描述回归程度的量相关系数R" class="headerlink" title="描述回归程度的量相关系数R"></a>描述回归程度的量相关系数R</h2><p>总平方和(SST)<br>$$\sum_{i=0}^n{ (y^i - \overline{y})}^2 $$<br>回归平方和(SSR)</p>
+<p>$$\sum_{i=0}^n{ (\hat{y} - \overline{y})}^2 $$<br>残差平方和(SSE)<br>$$\sum_{i=0}^n{ (y^i - \hat{y})}^2 $$<br>关系<br>$$ SST=SSR+SSE$$<br>$$R=SSR/SST=1-SSE/SST$$</p>
+<h1 id="实验-梯度下降法"><a href="#实验-梯度下降法" class="headerlink" title="实验 梯度下降法"></a>实验 梯度下降法</h1><p>梯度下降 在今天的实验中由于学习率（步长）选择错误所以回归结果跑了十万八千里。让我明白了步长选择的重要性，用c语言调试不能显示散点图与回归曲线，所以很难受。<br>C语言结果<br><img src="https://img-blog.csdnimg.cn/20190907220530378.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Python jupyter Notebook<br><img src="https://img-blog.csdnimg.cn/20190907220703905.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE2NjgwNjk1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void gradient_descent_runner(double *x_data, double *y_data,double b, double k,double lr, int epochs)</span><br><span class="line">&#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	double b_grad,k_grad;</span><br><span class="line">	double m;</span><br><span class="line">    </span><br><span class="line">    m &#x3D; row;</span><br><span class="line"></span><br><span class="line">    for(i&#x3D;0 ; i &lt; epochs; i++)</span><br><span class="line">	&#123;</span><br><span class="line">        b_grad &#x3D; 0;</span><br><span class="line">        k_grad &#x3D; 0;</span><br><span class="line"> </span><br><span class="line">        </span><br><span class="line">		for (j&#x3D;0 ; j&lt;m ; j++ ) </span><br><span class="line">		&#123;</span><br><span class="line">            b_grad +&#x3D; (1&#x2F;m) * ( ((k * x_data[j]) + b) - y_data[j]  );</span><br><span class="line">            k_grad +&#x3D; (1&#x2F;m) * x_data[j] * (((k * x_data[j]) + b) - y_data[j]);</span><br><span class="line">			printf(&quot;%lf\n&quot;,b_grad);</span><br><span class="line">		&#125;</span><br><span class="line">        b &#x3D; b - (lr * b_grad);</span><br><span class="line">        k &#x3D; k - (lr * k_grad);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;b&#x3D;%lf \nk&#x3D;%lf&quot;,b,k);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>梯度下降法在学习率（步长）的选择尤为重要，有可能选取到局部最优解而不是全局最优解。可以随机取点 比较结果取最小值。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/06/2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -399,14 +475,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
